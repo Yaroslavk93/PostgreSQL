@@ -101,11 +101,11 @@ psql_2
     SELECT * FROM persons;
     ```
 - Видите ли вы новую запись и если да то почему?
-     id | first_name | second_name
-    ----|------------|-------------
-      1 | ivan       | ivanov
-      2 | petr       | petrov
-      3 | sergey     | sergeev
+    id | first_name | second_name
+    ---|------------|-------------
+     1 | ivan       | ivanov
+     2 | petr       | petrov
+     3 | sergey     | sergeev
     (3 rows)
 
     _Теперь новая запись видна, поскольку транзакция в первой сессии была закоммитирована._
@@ -132,11 +132,11 @@ psql_2
     SELECT * FROM persons;
     ```
 - Видите ли вы новую запись и если да то почему?
-     id | first_name | second_name
-    ----|------------|-------------
-      1 | ivan       | ivanov
-      2 | petr       | petrov
-      3 | sergey     | sergeev
+    id | first_name | second_name
+    ---|------------|-------------
+     1 | ivan       | ivanov
+     2 | petr       | petrov
+     3 | sergey     | sergeev
     (3 rows)
 
     _В данном случае новые данные не отобразятся, по скольку не закоммитили транзакции в 1й и 2й сессиях_
@@ -151,11 +151,11 @@ psql_1
     SELECT * FROM persons;
     ```
 - Видите ли вы новую запись и если да то почему?
-     id | first_name | second_name
-    ----|------------|-------------
-      1 | ivan       | ivanov
-      2 | petr       | petrov
-      3 | sergey     | sergeev
+    id | first_name | second_name
+    ---|------------|-------------
+     1 | ivan       | ivanov
+     2 | petr       | petrov
+     3 | sergey     | sergeev
     (3 rows)
 
     _Несмотря на то, что транзакция в первой сессии была закоммитирована, новая запись не должна отображаться, поскольку уровень изоляции REPEATABLE READ гарантирует, что мы продолжаем видеть состояние данных на момент начала транзакции._
@@ -170,12 +170,12 @@ psql_2
     SELECT * FROM persons;
     ```
 - Видите ли вы новую запись и если да то почему?
-     id | first_name | second_name
-    ----|------------|-------------
-      1 | ivan       | ivanov
-      2 | petr       | petrov
-      3 | sergey     | sergeev
-      4 | sveta      | svetova
+    id | first_name | second_name
+    ---|------------|-------------
+     1 | ivan       | ivanov
+     2 | petr       | petrov
+     3 | sergey     | sergeev
+     4 | sveta      | svetova
     (4 rows)
 
     _Теперь мы видем все записи, включая последнюю, которую я добавил в первой сессии, поскольку транзакция была завершена, и я начал новую транзакцию с обновленным состоянием данных._
