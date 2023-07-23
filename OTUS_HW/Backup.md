@@ -281,3 +281,21 @@ nano restore.list
 ```bash
 pg_restore -U postgres -d testdb2 -L restore.list ~/backups/testdb.backup
 ``````
+*Проверяем*
+```bash
+psql -U postgres -d testdb2 -c "SELECT * FROM test_schema.test_table2 LIMIT 10;"
+
+ id |               name               |              email
+----+----------------------------------+----------------------------------
+  1 | ae68de7283cccf550c98911d1d0dd554 | e41f531a39806ebfb404c075d792ca35
+  2 | acaeae491b080952343d8fd15402c9c0 | c139606d653ec3e06364e198e730236c
+  3 | 46b873d7e5389aece8cc335578d34b16 | 6ea78941fa7525e9a1c2cf1e02460dc0
+  4 | e15c411eec603c756f183151f436816d | af4253b8cc8ce47e0c667e8dabf56044
+  5 | 85f909342e2c9b6008cc42103a4a6839 | a3b6a2e37885b58a7eef252f9d3d1a6a
+  6 | 029b276d93b226ef117a8e621f267a23 | c32967583d8a6e5a1f5270aca222d835
+  7 | 014c9e2434114c5965a9adefa1f64ae0 | 546ea4aba0bc2d0e4511dd627282bd65
+  8 | 92ebe74d8ca3b961e488c0f4cb375030 | 430eb42df5358c90ffa95ad938111ce7
+  9 | 2aff382a3294a03347c6b236928a1bd0 | 1f02aec4fce18196d8d83ba4626d9089
+ 10 | 552a5002f4db6a92d822a13ce178224f | 6523b818dbcacb36e2601512e0d8eb94
+(10 rows)
+``````
