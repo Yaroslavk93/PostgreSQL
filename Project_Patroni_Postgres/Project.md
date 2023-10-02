@@ -386,7 +386,7 @@ Sep 30 20:22:11 pg-node5 systemd[1]: haproxy.service: Succeeded.
 ```makefile
 http://192.168.10.14:7000/
 ```
-![image.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-1.png)
+![image.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image.png)
 
 ---------------------------------------------------------
 
@@ -451,7 +451,7 @@ Oct 01 13:31:50 pg-node6 grafana[27144]: logger=infra.usagestats t=2023-10-01T13
 ```makefile
 http://192.168.10.15:3000/
 ```
-![image-1.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-2.png)
+![image-1.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-1.png)
 
 ----------------------------------
 7. Устанавливаем и настраиваем Prometheus (на ноду с Grafana)
@@ -1220,7 +1220,7 @@ CREATE DATABASE testdb;
 sysbench --db-driver=pgsql --table-size=1000000 --tables=24 --threads=1 --pgsql-host=192.168.10.14 --pgsql-port=5000 --pgsql-user=postgres --pgsql-password=admin --pgsql-db=testdb /usr/share/sysbench/oltp_common.lua prepare
 ```
 - *При мониторинге в Gafana также можем наблюдать возросшую активность в момент заливки тестовых данных:*
-![Alt text](image-17.png)
+![image-17.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-17.png)
 
 - *Далее запускаем тест на сгенерированных тестовых данных:* 
    
@@ -1233,9 +1233,9 @@ sysbench --db-driver=pgsql --table-size=1000000 --tables=24 --threads=1 --pgsql-
 sysbench --db-driver=pgsql --tables=24 --table-size=1000000 --threads=10 --time=600 --report-interval=10 --pgsql-host=192.168.10.14 --pgsql-port=5000 --pgsql-user=postgres --pgsql-password=admin --pgsql-db=testdb --rand-type=uniform --point-selects=5 --simple-ranges=1 --sum-ranges=1 --order-ranges=1 --distinct-ranges=1 --index-updates=2 --non-index-updates=2 --delete-inserts=3 /usr/share/sysbench/oltp_read_write.lua run
 ```
 - *В момент нагрузочного тестирования так же наблюдалось плановое переключение ноды в качестве лидера на haproxy:*
-![Alt text](image-18.png)
+![image-18.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-18.png)
 - *В Grafana так же можно увидеть всплеск активности во время тестирования. Можно обратить внимание на transaction (commits / rollbacks):*
-![Alt text](image-19.png)
+![image-19.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-19.png)
 
 - *Тестирование показало следующие результаты:*
 ```bash
