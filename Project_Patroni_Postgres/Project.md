@@ -386,7 +386,7 @@ Sep 30 20:22:11 pg-node5 systemd[1]: haproxy.service: Succeeded.
 ```makefile
 http://192.168.10.14:7000/
 ```
-![Alt text](image.png)
+![image.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-1.png)
 
 ---------------------------------------------------------
 
@@ -451,7 +451,7 @@ Oct 01 13:31:50 pg-node6 grafana[27144]: logger=infra.usagestats t=2023-10-01T13
 ```makefile
 http://192.168.10.15:3000/
 ```
-![Alt text](image-1.png)
+![image-1.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-2.png)
 
 ----------------------------------
 7. Устанавливаем и настраиваем Prometheus (на ноду с Grafana)
@@ -693,27 +693,27 @@ Oct 01 16:03:30 pg-node6 prometheus[29635]: ts=2023-10-01T16:03:30.535Z caller=m
 http://192.168.10.15:9187/
 http://192.168.10.15:9100/
 ```
-![Alt text](image-3.png)
-![Alt text](image-7.png)
-![Alt text](image-4.png)
-![Alt text](image-8.png)
+![image-3.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-3.png)
+![image-7.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-7.png)
+![image-4.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-4.png)
+![image-8.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-8.png)
 - *Для просмотра эндпоинтов в prometheus пробрасываем порт 9090 и подключаемся по http:*
 ```makefile
 http://192.168.10.15:9090/
 ```
-![Alt text](image-9.png)
+![image-9.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-9.png)
 
 - *Настраиваем Data sources и выбираем Prometheus*
-![Alt text](image-10.png)
+![image-10.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-10.png)
 
 - *Далее импортируем готовый дашборд для мониторинга систем, выбираем в качестве источника данных Prometheus. Я выбрал 14513:*
-![Alt text](image-11.png)
+![image-11.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-11.png)
 - *На данном дашборде отображается полная информация о нашей системе (все ноды):*
 
-![Alt text](image-12.png)
+![image-12.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-12.png)
 
 - *Далее настраиваем дашборд для PostgreSQl. Я выбрал в качестве готового варианта id 9628:*
-![Alt text](image-13.png)
+![image-13.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-13.png)
 
 - *Для настройки кастомных метрик от postgres_exporter - создаём файл с метриками:*
 ```bash
@@ -1033,7 +1033,7 @@ systemctl daemon-reload
 systemctl restart postgres_exporter
 ```
 - *Для изменения настроек в дабордах Grafana - переходим на необходмуб панель и нажинаем Edit. Находим нужную метрику в postges_exporter и правим. В моём примере прописал process_start_time_seconds{release="$release", instance="$instance"} * 1000. И нажимаем run queries:*
-![Alt text](image-14.png)
+![image-14.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-14.png)
 
 - *Далее я обнаружил, что кастомные метрики не поступают в экспортер и внёс соответствующие изменения в конфигурационный файл:*
 ```bash
@@ -1152,7 +1152,7 @@ pg_settings_pg_stat_statements_track_utility{server="192.168.10.14:5000"} 1
 11. Проверяем работоспособность кластера patroni + postgres  
 - *Для того, чтобы убедиться в работоспособности кластера patroni, сымитируем падение ноды:*  
 *На тот момент pg_node2 была primary*
-![Alt text](image-15.png)
+![image-15.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-15.png)
 ```bash
 patronictl -c /etc/patroni.yml list
 ```
@@ -1170,7 +1170,7 @@ patronictl -c /etc/patroni.yml list
 systemctl stop patroni
 ```
 - *Наблюдаем переключение на другую ноду, в моём случае теперь лидером является pg_node1*
-![Alt text](image-16.png)
+![image-16.png](https://github.com/Yaroslavk93/PostgreSQL/blob/main/Project_Patroni_Postgres/img/image-16.png)
 ```bash
 patronictl -c /etc/patroni.yml list
 ```
