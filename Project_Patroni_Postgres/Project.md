@@ -9,7 +9,7 @@
 
 
 ------------------
-1. В рамках подготовки, разворачиваем 6 ноды с помощью Vagrant (3 postgres, 1 ETCD, 1 HAProxy, 1 Monitoring) 
+1. В рамках подготовки, разворачиваем 6 нод с помощью Vagrant (3 postgres, 1 ETCD, 1 HAProxy, 1 Monitoring) 
 - *переходим в нужную директорию и создаём конфигурационный файл Vagrant:*
 ```bash
 vagrant init
